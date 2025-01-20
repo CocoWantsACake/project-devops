@@ -1,0 +1,13 @@
+pipeline {
+    agent { dockerfile true }
+
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh 'echo heheheha'
+                }
+            }
+        }
+    }
+}
