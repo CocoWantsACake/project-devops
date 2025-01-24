@@ -15,5 +15,6 @@ spec:
       containers:
       - name: go-image-fromjenkins
         image: go-image-fromjenkins:latest  # Use the correct image name if pushing to a registry
+        imagePullPolicy: Never
         ports:
-        - containerPort: 8080
+        - containerPort: 8079
