@@ -18,6 +18,16 @@ pipeline {
             }
         }
 
+	stage('Setup Minikube Docker Environment') {
+	    steps {
+		script {
+		    sh """
+		    eval \$(minikube docker-env)
+		    """
+		}
+	    }
+	}
+
 	stage('Deploy to Minikube') {
 	    steps {
 		script {
