@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-image-fromjenkins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-image-fromjenkins
+  template:
+    metadata:
+      labels:
+        app: go-image-fromjenkins
+    spec:
+      containers:
+      - name: go-image-fromjenkins
+        image: go-image-fromjenkins:latest  # Use the correct image name if pushing to a registry
+        ports:
+        - containerPort: 8080

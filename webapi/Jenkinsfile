@@ -4,6 +4,7 @@ pipeline {
     environment {
 	DOCKER_IMAGE = 'go-image-fromjenkins'
 	DOCKER_TAG = 'latest'
+	KUBE_NAMESPACE = 'default'
     }
 
     stages {
@@ -16,5 +17,15 @@ pipeline {
                 }
             }
         }
+
+	stage('Deploy to Minikube') {
+	    steps {
+		script {
+		    sh """
+		    kubectl apply -f webapi/k8s/deployment.yaml --namespace=${KUBE_NAMESPACE}
+		    """
+		}
+	    }
+	}
     }
 }
