@@ -10,7 +10,9 @@ pipeline {
         stage('Create Namespace') {
 	    steps {
 		script {
-		    sh 'kubectl create namespace development'
+		    catchError {
+		        sh 'kubectl create namespace development'
+		    }
 		}
 	    }
 	}
