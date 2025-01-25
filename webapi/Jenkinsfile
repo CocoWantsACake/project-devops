@@ -10,10 +10,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh """
-		    eval $(minikube -p minikube docker-env)
-		    docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ./webapi
-		    """
+                    sh 'eval $(minikube -p minikube docker-env)'
+		    sh 'docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ./webapi'
                 }
             }
         }
