@@ -1,0 +1,10 @@
+prometheus:
+  extraVolumes:
+    - name: prometheus-alert
+      configMap:
+      - name: prometheus-alert
+
+  extraVolumeMounts:
+    - name: prometheus-alert
+      mountPath: /etc/prometheus/rules
+      readOnly: true
